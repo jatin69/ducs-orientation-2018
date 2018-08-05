@@ -13,7 +13,7 @@
 
             <!-- HOME -->
             <section>
-                <pre style="font-size: 150%">
+                <pre class="fade-down" id="welcome" style="font-size: 150%">
                     <code>print("Hello DUCS!")</code>
                 </pre>
             </section>
@@ -118,7 +118,7 @@
                                 </td>
                             </tr>
                             <tr class="fragment fade-in">
-                                <td>&starf;&starf;&star;&star;</td>
+                                <td>&starf;&starf;&starf;&star;</td>
                                 <td>
                                     <a href="https://www.hackerrank.com">HackerRank</a>
                                 </td>
@@ -142,20 +142,23 @@
                     <h3>Social Networks</h3>
                     <ul>
                         <li class="fragment fade-in">Clean up your facebook</li>
-                        <li class="fragment fade-in">Join groups - Hackathon Hackers, Fb DevC, and many more.</li>
+                        <li class="fragment fade-in">Join developer groups</li>
+                        <li class="fragment fade-in">like, Hackathon Hackers</li>
+                        <li class="fragment fade-in">and, Facebook Developer Circle Delhi</li>
                         <li class="fragment fade-in">Setup your twitter</li>
-                        <li class="fragment fade-in">Follow great people ( chirag ) </li>
+                        <li class="fragment fade-in">Follow great people </li>
+                        <li class="fragment fade-in"> like, Dan Abramov, Addy osmani</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>There's more to social presence</h3>
+                    <h3>Build your developer reputation</h3>
                     <ul>
                         <li class="fragment fade-in">Update your Linkedin</li>
                         <li class="fragment fade-in">Start Writing on Medium</li>
-                        <li class="fragment fade-in">Go to meetups - meetup.com, eventbrite, eventshigh</li>
+                        <li class="fragment fade-in">Go to meetups </li>
+                        <li class="fragment fade-in">meetup.com, eventbrite, eventshigh</li>
                         <li class="fragment fade-in">Interact with developers</li>
-                        <li class="fragment fade-in">Build your developer reputation</li>
                         <li class="fragment fade-in">Keep your github active</li>
                         <li class="fragment fade-in">Make your portfolio site</li>
                     </ul>
@@ -165,9 +168,10 @@
             <section>
                 <h2>Open Source Development</h2>
                 <ul>
-                    <li class="fragment fade-in">Learn source control</li>
+                    <li class="fragment fade-in">Learn Version control</li>
                     <li class="fragment fade-in">Join Github</li>
                     <li class="fragment fade-in">Explore and Read a lot of code</li>
+                    <p class="fragment fade-in">... and in time, contribute</p>
                 </ul>
             </section>
 
@@ -193,7 +197,7 @@
                 <pre><code>
             console.log('All the best');
             prompt('Any questions?');
-
+            
             // HTML5 presentation powered by: reveal.js
             // Be a developer. See the source code.
             </code></pre>
@@ -222,6 +226,33 @@
                 },
             ]
         });
+
+        function welcomeMsg() {
+            const msgs = [
+                `console.log("Hello DUCS!")`,
+                `print("Hello DUCS!")`,
+                `cout << "Hello DUCS!\\n";`,
+                `<h1>Hello DUCS</h1>`,
+                `body{\n  content: "Hello DUCS"\n}`
+            ];
+            const idx = Math.floor(Math.random() * msgs.length);
+            const msg = msgs[idx];
+            let highlighted = hljs.highlightAuto(msg);
+            if (highlighted.value) {
+                document.getElementById("welcome").innerHTML = highlighted.value;
+            }
+        }
+        let interval = setInterval(welcomeMsg, 1000);
+
+        function HashHandler() {
+            console.log(window.location.hash);
+            if (window.location.hash.endsWith("#/")) {
+                interval = setInterval(welcomeMsg, 1000);
+            } else {
+                clearInterval(interval);
+            }
+        }
+        window.addEventListener("hashchange", HashHandler, false);
     </script>
 </body>
 
