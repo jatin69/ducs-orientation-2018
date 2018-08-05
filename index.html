@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/black.css">
     <link rel="stylesheet" href="css/zenburn.css">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
     <title>DUCS 2018 Orientation</title>
 </head>
 
@@ -195,12 +196,16 @@
             </section>
             <section>
                 <pre><code>
-            console.log('All the best');
-            prompt('Any questions?');
+    console.log('All the best');
+    prompt('Any questions?');
+    // HTML5 presentation powered by: reveal.js
+    // Be a developer. See the source code.
+                    </code></pre>
+
+            </section>
             
-            // HTML5 presentation powered by: reveal.js
-            // Be a developer. See the source code.
-            </code></pre>
+            <section>
+                <section class="fig-container" data-file="collision-detection.html"></section>
             </section>
         </div>
     </div>
@@ -224,16 +229,21 @@
                     src: 'js/zoom.js',
                     async: true
                 },
+                {
+                    src: 'js/reveald3.js'
+                },
             ]
         });
 
         function welcomeMsg() {
             const msgs = [
-                `console.log("Hello DUCS!")`,
                 `print("Hello DUCS!")`,
-                `cout << "Hello DUCS!\\n";`,
+                `console.log("Hello DUCS!")`,
+                `std::cout << "Hello DUCS!";`,
+                `body{\n  content: "Hello DUCS"\n}`,
+                `cat('Hello DUCS');`,
+                `println("Hello DUCS");`,
                 `<h1>Hello DUCS</h1>`,
-                `body{\n  content: "Hello DUCS"\n}`
             ];
             const idx = Math.floor(Math.random() * msgs.length);
             const msg = msgs[idx];
@@ -242,12 +252,11 @@
                 document.getElementById("welcome").innerHTML = highlighted.value;
             }
         }
-        let interval = setInterval(welcomeMsg, 1000);
+        let interval = setInterval(welcomeMsg, 1200);
 
         function HashHandler() {
-            console.log(window.location.hash);
             if (window.location.hash.endsWith("#/")) {
-                interval = setInterval(welcomeMsg, 1000);
+                interval = setInterval(welcomeMsg, 1200);
             } else {
                 clearInterval(interval);
             }
